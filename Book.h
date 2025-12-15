@@ -10,10 +10,21 @@ private:
     int id;
     string title;
     float price;
+    
+    static int bookCount; //Count Number of books object are created (must be static)
+
 
 public:
     Book();
     Book(int, string, float);
     void display() const;
+
+    Book(const Book&); //copy constructor
+    
+    void setData(int, string,float); //set id, name, and price to books;
+    void setData(int,string); // run in case, the price of book is not known at that time
+
+    static int getBookCount(); //static funciton
 };
+
 #endif
