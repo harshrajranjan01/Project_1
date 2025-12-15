@@ -7,7 +7,10 @@ using namespace std;
 
 int main()
 {
-    Book b1(101, "C++ programming", 450);
+    Book b1;
+    cin >> b1;
+    ++b1;
+    cout << b1 << endl;
 
     User *u; // Base class Pointer
 
@@ -15,5 +18,5 @@ int main()
 
     u->display(); // runtime binding
 
-    delete u;
+    delete u; // calls derived destructor
 }
