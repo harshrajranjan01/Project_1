@@ -7,16 +7,24 @@ using namespace std;
 
 int main()
 {
-    Book b1;
-    cin >> b1;
-    ++b1;
-    cout << b1 << endl;
+    Book b1(101, "c programming", 200);
+    Book b2(102, "OOPs ", 520);
+    Book b3(103, "DSA", 350);
 
-    User *u; // Base class Pointer
+    b1.writeToFile();
+    b2.writeToFile();
+    b3.writeToFile();
 
-    u = new Student(38, "Harsh", 5);
+    cout << "All Books: " << endl;
+    Book::readAllFromFile();
+    cout << endl;
 
-    u->display(); // runtime binding
+    cout << "Updatting Price of book id 101" << endl;
 
-    delete u; // calls derived destructor
+    Book::updatePriceById(101, 900);
+
+    cout << "After Updating the file" << endl;
+    Book::readAllFromFile();
+
+    return 0;
 }

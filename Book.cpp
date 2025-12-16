@@ -1,5 +1,6 @@
 #include "Book.h"
 #include <iostream>
+#include <fstream>
 
 int Book::bookCount = 0;
 Book::Book() // Book Constructor outside class
@@ -72,4 +73,66 @@ Book Book::operator++()
 {
     price = price + 10; // increase price
     return *this;
+}
+
+void Book::writeToFile() const
+{
+    ofstream fout("books.dat", ios::binary | ios::app);
+
+    if (!fout)
+    {
+        cout << "Error Opening File" << endl;
+        return;
+    }
+
+    fout.write((char *)this, sizeof(*this)); // this-> current object in memory
+    fout.close();
+}
+
+void Book::readAllFromFile()
+{
+    ifstream fin("books.dat", ios::binary);
+    if (!fin)
+    {
+        cout << "File Not found" << endl;
+        return;
+    }
+
+    Book temp;
+
+    while (fin.read((char *)&temp, sizeof(temp)))
+    {
+        temp.display();
+    }
+    fin.close();
+}
+
+bool Book::updatePriceById(int SearchId, float newPrice)
+{
+    fstream file("books.dat", ios::binary | ios::in | ios::out);
+
+    if (!file)
+    {
+        cout << "Failed TO open file" << endl;
+        return false;
+    }
+
+    Book temp;
+
+    while (file.read((char *)&temp, sizeof(temp)))
+    {
+        if (temp.id == SearchId)
+        {
+            temp.price = newPrice;
+
+            int pos = -1 * (int)sizeof(temp);
+            file.seekp(pos, ios::cur);
+
+            file.write((char *)&temp, sizeof(temp));
+
+            return true;
+        }
+    }
+    file.close();
+    return false;
 }

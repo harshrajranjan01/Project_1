@@ -30,6 +30,13 @@ public:
     friend ostream &operator<<(ostream &, const Book &);
 
     Book operator++(); // Preincrement operator
+
+    // File Handling
+
+    void writeToFile() const;
+    static void readAllFromFile();
+    
+    static bool updatePriceById(int SearchId, float newPrice);
 };
 
 #endif
