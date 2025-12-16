@@ -141,3 +141,13 @@ bool Book::updatePriceById(int SearchId, float newPrice)
     file.close();
     return false;
 }
+
+int Book::getId() const
+{
+    return id;
+}
+
+float Book::getPrice() const
+{
+    return price;
+}

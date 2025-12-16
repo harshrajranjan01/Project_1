@@ -1,34 +1,25 @@
 #include <iostream>
-#include "Book.h"
-#include "User.h"
-#include "Student.h"
+#include "Library.h"
 
 using namespace std;
 
 int main()
 {
-    try
-    {
-        Book b1(101, "c programming", 200);
-        b1.display();
-        Book b2(102, "OOP", -520);
-        b2.display();
-    }
-    catch (const exception &e)
-    {
-        cerr << "Exception caught: " << e.what() << endl;
-    }
+    Library lib;
 
-    try
-    {
-        User *u = new Student(1, "Harsh", -10);
-        u->display();
-        delete u;
-    }
-    catch (const exception &e)
-    {
-        cerr << "Exception caught: " << e.what() << endl;
-    }
+    lib.addBook(Book(1, "C++", 450));
+    lib.addBook(Book(2, "Dsa", 300));
+    lib.addBook(Book(3, "Python", 500));
 
+    cout << "All Books:" << endl;
+    lib.displayAll();
+
+    cout << "Sorted By Price" << endl;
+    lib.sortByPrice();
+    lib.displayAll();
+
+    cout << "Find Book wiht ID: 2" << endl;
+
+    cout << (lib.findById(2) ? "Book Found" : "Book Not Found") << endl;
     return 0;
 }

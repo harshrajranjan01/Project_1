@@ -37,6 +37,9 @@ public:
     static void readAllFromFile();
 
     static bool updatePriceById(int SearchId, float newPrice);
+
+    int getId() const;
+    float getPrice() const;
 };
 
 #endif
