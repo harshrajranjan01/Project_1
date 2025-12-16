@@ -16,7 +16,7 @@ private:
 
 public:
     Book();
-    Book(int, string, float);
+    Book(int, string, float); //// may throw exception
     void display() const;
 
     Book(const Book &); // copy constructor
@@ -35,7 +35,7 @@ public:
 
     void writeToFile() const;
     static void readAllFromFile();
-    
+
     static bool updatePriceById(int SearchId, float newPrice);
 };
 

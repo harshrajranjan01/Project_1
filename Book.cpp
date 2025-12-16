@@ -14,6 +14,11 @@ Book::Book() // Book Constructor outside class
 
 Book::Book(int i, string t, float p)
 {
+    if (p < 0) // exception handling
+    {
+        throw invalid_argument("Book Price Cannot Be negative");
+    }
+
     id = i;
     title = t;
     price = p;

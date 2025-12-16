@@ -3,6 +3,11 @@
 
 Student::Student(int Id, string n, int days) : User(Id, n) // Constructor chaining
 {
+    if (days < 0) // Exception Handling
+    {
+        throw invalid_argument("Days can't be negative ");
+    }
+
     DaysLate = days;
 }
 

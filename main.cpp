@@ -7,24 +7,28 @@ using namespace std;
 
 int main()
 {
-    Book b1(101, "c programming", 200);
-    Book b2(102, "OOPs ", 520);
-    Book b3(103, "DSA", 350);
+    try
+    {
+        Book b1(101, "c programming", 200);
+        b1.display();
+        Book b2(102, "OOP", -520);
+        b2.display();
+    }
+    catch (const exception &e)
+    {
+        cerr << "Exception caught: " << e.what() << endl;
+    }
 
-    b1.writeToFile();
-    b2.writeToFile();
-    b3.writeToFile();
-
-    cout << "All Books: " << endl;
-    Book::readAllFromFile();
-    cout << endl;
-
-    cout << "Updatting Price of book id 101" << endl;
-
-    Book::updatePriceById(101, 900);
-
-    cout << "After Updating the file" << endl;
-    Book::readAllFromFile();
+    try
+    {
+        User *u = new Student(1, "Harsh", -10);
+        u->display();
+        delete u;
+    }
+    catch (const exception &e)
+    {
+        cerr << "Exception caught: " << e.what() << endl;
+    }
 
     return 0;
 }
