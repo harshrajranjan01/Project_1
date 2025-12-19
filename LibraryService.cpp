@@ -65,6 +65,7 @@ void LibraryService::fileMenu()
         int id;
         float price;
         cout << "Enter ID and New Price: " << endl;
+        cin>>id>>price;
         Book::updatePriceById(id, price);
     }
 }
