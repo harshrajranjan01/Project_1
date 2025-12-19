@@ -47,6 +47,7 @@ void LibraryService::fileMenu()
          << "2. Display File Books" << endl
          << "3. Update Price " << endl
          << "....Enter YOur Choice...." << endl;
+    cin >> ch;
 
     if (ch == 1)
     {
