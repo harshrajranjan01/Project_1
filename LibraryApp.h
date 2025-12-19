@@ -3,7 +3,7 @@
 
 class LibraryApp
 {
-    private:
+    public:
     void run(); //starts the application
 };
 #endif
