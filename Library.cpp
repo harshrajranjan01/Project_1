@@ -11,7 +11,7 @@ void Library::addBook(const Book &b)
 
 void Library::displayAll() const
 {
-    for (int i = 0; i < books.size(); i++)
+    for (size_t i = 0; i < books.size(); i++)
     {
         const Book &b = books[i];  //Book b = books[i];-->this will crate copy of the book 
         b.display();
